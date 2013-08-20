@@ -14,8 +14,5 @@
     <dependencies>
       <dependency id="Owin" version="1.0" />
     </dependencies>
-    <references>
-      <reference file="Microsoft.Owin.dll" />
-    </references>
   </metadata>
 </package>

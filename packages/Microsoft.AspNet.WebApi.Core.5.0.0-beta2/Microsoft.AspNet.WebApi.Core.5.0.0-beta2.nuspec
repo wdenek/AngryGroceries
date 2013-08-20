@@ -17,8 +17,5 @@
     <dependencies>
       <dependency id="Microsoft.AspNet.WebApi.Client" version="5.0.0-beta2" />
     </dependencies>
-    <references>
-      <reference file="System.Web.Http.dll" />
-    </references>
   </metadata>
 </package>
