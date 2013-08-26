@@ -3,9 +3,93 @@
 }
 
 <div class="row" ng-controller="indexController">
-    <div class="span12">
-        <h1>{{message}}</h1>
-        <p class="lead">AngryGroceries is a web site and web applications using HTML, CSS and JavaScript.</p>
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="btn-toolbar shopping-list-actionbar">
+            <div class="btn-group">
+                <div class="dropdown shopping-list-dropdown">
+                    <a class="btn" data-toggle="dropdown" data-target="shopping-list-dropdown-menu">
+                        <h1>My list</h1>
+                    </a>
+                    <ul class="dropdown-menu shopping-list-dropdown-menu">
+                        <li><a href="#">TODO: Bind to angular</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">Create new</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            
+            <div class="btn-group shopping-list-actions pull-right">
+                <a href="#" class="btn btn-default">
+                    <i class="icon-share"></i>
+                    <span class="hidden-xs">Share</span>
+                </a>
+            </div>
+
+            <div class="btn-group shopping-list-actions pull-right">
+                <a href="#" class="btn btn-default"><i class="icon-remove"></i>
+                    <span class="hidden-xs">Delete</span>
+                </a>
+            </div>            
+
+            <div class="btn-group shopping-list-actions pull-right">
+                <a href="#" class="btn btn-default"><i class="icon-edit"></i>
+                    <span class="hidden-xs">Edit</span>
+                </a>
+            </div>
+
+            
+        </div>
+
+    </div>
+
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="input-group create-item-control">
+            <input type="text" class="form-control" />
+            <span class="input-group-btn">
+                <button class="btn btn-primary" type="button">Add</button>
+            </span>
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <ul class="shopping-list incomplete">
+            <li>
+                <input type="checkbox"/>
+                <span>Stuff</span>
+            </li>
+            <li>
+                <input type="checkbox" />
+                <span>Stuff</span>
+            </li>
+            <li>
+                <input type="checkbox" />
+                <span>Stuff</span>
+            </li>
+        </ul>
+
+        <h2>Completed items</h2>
+        <ul class="shopping-list complete">
+            <li>
+                <input type="checkbox" checked="checked" />
+                <span>Stuff</span>
+            </li>
+            <li>
+                <input type="checkbox" checked="checked" />
+                <span>Stuff</span>
+            </li>
+            <li>
+                <input type="checkbox" checked="checked" />
+                <span>Stuff</span>
+            </li>
+            <li>
+                <input type="checkbox" checked="checked" />
+                <span>Stuff</span>
+            </li>
+            <li>
+                <input type="checkbox" checked="checked" />
+                <span>Stuff</span>
+            </li>
+        </ul>
     </div>
 </div>
 

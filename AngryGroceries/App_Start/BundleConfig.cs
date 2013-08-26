@@ -12,8 +12,6 @@ namespace AngryGroceries
             // Bootstrap (responsive), font-awesome and custom
             // Todo:  replace Bundle with StyleBundle
             bundles.Add(new Bundle("~/Stylesheets/default")
-                .Include("~/Stylesheets/bootstrap.css")
-                .Include("~/Stylesheets/bootstrap-responsive.css")
                 .Include("~/Stylesheets/font-awesome.css")
                 .Include("~/Stylesheets/Site.css"));
             

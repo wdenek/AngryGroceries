@@ -1,0 +1,63 @@
+﻿@import "../Content/bootstrap/bootstrap.less";
+
+.navbar {
+    margin-top: 30px;
+}
+
+.shopping-list-actionbar {
+    .shopping-list-dropdown {
+        margin-left: -12px; // Correct for the extra padding added to the text.
+    }
+
+    .shopping-list-actions {
+        padding-top: 30px;
+    }
+}
+
+.create-item-control {
+    margin-bottom: 30px;
+}
+
+ul.shopping-list {
+    border-left: 1px solid @gray-lighter;
+    border-top: 1px solid @gray-lighter;
+    border-right: 1px solid @gray-lighter;
+    list-style-type: none;
+    margin-left: 0px;
+    padding-left: 0px;
+    margin-bottom: 30px;
+
+    li {
+        padding: 10px;
+        border-bottom: 1px solid @gray-lighter;
+        margin-left: 0px;
+    }
+}
+
+ul.shopping-list.complete {
+    color: @gray-light;
+    
+    span {
+        text-decoration: line-through;
+    }
+}
+
+@media (max-width: @screen-xs-max) {
+    .navbar {
+        margin-top: 0px;
+    }
+
+    .shopping-list-dropdown a.btn > h1 {
+        font-size: ceil(@font-size-base * 1.70);
+    }
+
+    .shopping-list-actionbar .shopping-list-actions {
+        padding-top: 20px;
+    }
+}
+
+@media (min-width: @screen-sm) {
+    .shopping-list-actions a.btn > span {
+        display: inline !important;
+    }
+}
