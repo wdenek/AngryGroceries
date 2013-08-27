@@ -2,23 +2,22 @@
     ViewBag.Title = "Home Page";  
 }
 
-<div class="row" ng-controller="indexController">
+<div class="row" ng-controller="ShoppingListController">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
         <div class="btn-toolbar shopping-list-actionbar">
             <div class="btn-group">
                 <div class="dropdown shopping-list-dropdown">
                     <a class="btn" data-toggle="dropdown" data-target="shopping-list-dropdown-menu">
-                        <h1>My list</h1>
+                        <h1>{{selectedShoppingList.name}}</h1>
                     </a>
                     <ul class="dropdown-menu shopping-list-dropdown-menu">
-                        <li><a href="#">TODO: Bind to angular</a></li>
+                        <li ng-repeat="item in shoppingLists"><a ng-click="selectShoppingList(item)">{{item.name}}</a></li>
                         <li class="divider"></li>
-                        <li><a href="#">Create new</a></li>
+                        <li><a ng-click="createNewShoppingList()">Create new</a></li>
                     </ul>
                 </div>
             </div>
-            
-            
+
             <div class="btn-group shopping-list-actions pull-right">
                 <a href="#" class="btn btn-default">
                     <i class="icon-share"></i>
@@ -30,69 +29,54 @@
                 <a href="#" class="btn btn-default"><i class="icon-remove"></i>
                     <span class="hidden-xs">Delete</span>
                 </a>
-            </div>            
+            </div>
 
             <div class="btn-group shopping-list-actions pull-right">
-                <a href="#" class="btn btn-default"><i class="icon-edit"></i>
+                <a href="#" class="btn btn-default" ng-click="editShoppingList()"><i class="icon-edit"></i>
                     <span class="hidden-xs">Edit</span>
                 </a>
             </div>
-
-            
         </div>
-
     </div>
 
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-        <div class="input-group create-item-control">
-            <input type="text" class="form-control" />
-            <span class="input-group-btn">
-                <button class="btn btn-primary" type="button">Add</button>
-            </span>
-        </div>
+        <form ng-submit="addItem()">
+            <div class="input-group create-item-control">
+                <input type="text" class="form-control" ng-model="newItemText" ng-instant-model />
+                <span class="input-group-btn">
+                    <button class="btn btn-primary" type="button" ng-click="addItem()">Add</button>
+                </span>
+            </div>
+        </form>
     </div>
-    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" ng-hide="hasItems()">
+        <p>Ooh, there's nothing on this list. Better start gathering up those groceries!</p>
+    </div>
+
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" ng-show="hasItems()">
         <ul class="shopping-list incomplete">
-            <li>
-                <input type="checkbox"/>
-                <span>Stuff</span>
+            <li ng-repeat="item in shoppingListItems | filter: filterIncompleteItems">
+                <input type="checkbox" ng-model="item.completed" />
+                <span>{{item.text}}</span>
             </li>
-            <li>
-                <input type="checkbox" />
-                <span>Stuff</span>
-            </li>
-            <li>
-                <input type="checkbox" />
-                <span>Stuff</span>
+            <li ng-show="isEverythingCompleted()">
+                <span>Yay, everything done! You can relax now. Perhaps a bit more AngularJS?</span>
             </li>
         </ul>
 
         <h2>Completed items</h2>
         <ul class="shopping-list complete">
-            <li>
-                <input type="checkbox" checked="checked" />
-                <span>Stuff</span>
+            <li ng-repeat="item in shoppingListItems | filter: filterCompletedItems">
+                <input type="checkbox" ng-model="item.completed" />
+                <span>{{item.text}}</span>
             </li>
-            <li>
-                <input type="checkbox" checked="checked" />
-                <span>Stuff</span>
-            </li>
-            <li>
-                <input type="checkbox" checked="checked" />
-                <span>Stuff</span>
-            </li>
-            <li>
-                <input type="checkbox" checked="checked" />
-                <span>Stuff</span>
-            </li>
-            <li>
-                <input type="checkbox" checked="checked" />
-                <span>Stuff</span>
+            <li ng-show="isNothingCompleted()" class="shopping-list-message">
+                <span>Oh crap, there's still a big pile of things that you need to get.</span>
             </li>
         </ul>
     </div>
 </div>
 
 @section scripts {
-    <script src="@Url.Content("~/Scripts/app/indexController.js")" type="text/javascript"></script>
+    @Scripts.Render("~/Scripts/app");
 }

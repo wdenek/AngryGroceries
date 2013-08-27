@@ -1,8 +1,21 @@
 ﻿@import "../Content/bootstrap/bootstrap.less";
 
+// Bootstrap fixes
+//------------------------------------------------------------
 .navbar {
     margin-top: 30px;
 }
+
+.modal {
+    display: block;
+}
+
+.hide {
+    display: none;
+}
+
+// App specific styles
+//------------------------------------------------------------
 
 .shopping-list-actionbar {
     .shopping-list-dropdown {
@@ -34,13 +47,18 @@ ul.shopping-list {
     }
 }
 
-ul.shopping-list.complete {
-    color: @gray-light;
-    
-    span {
-        text-decoration: line-through;
+    ul.shopping-list.complete {
+        color: @gray-light;
+
+        span {
+            text-decoration: line-through;
+        }
+
+        li.shopping-list-message span {
+            text-decoration: none;
+            color: black;
+        }
     }
-}
 
 @media (max-width: @screen-xs-max) {
     .navbar {
