@@ -1,5 +1,4 @@
-﻿angular.module('AngryGroceries')
-       .controller('ShoppingListController', function ($scope, $dialog) {
+﻿angular.module('AngryGroceries').controller('ShoppingListController', ["$scope","$dialog", function ($scope, $dialog) {
            // Public properties
            //----------------------------------------
            $scope.newItemText = "";
@@ -122,4 +121,4 @@
            // Initialization
            //----------------------------------------
            $scope.selectShoppingList($scope.shoppingLists[0]);
-       });
+       }]);

@@ -31,7 +31,7 @@ namespace AngryGroceries
                 .Include("~/Scripts/ui-bootstrap-0.5.0.js")
                 .Include("~/Scripts/ui-bootstrap-tpls-{version}.js"));
 
-            bundles.Add(new Bundle("~/Scripts/app")
+            bundles.Add(new Bundle("~/Scripts/angrygroceries")
                 .Include("~/Scripts/app/app.js")
                 .Include("~/Scripts/app/*Controller.js"));
         }
