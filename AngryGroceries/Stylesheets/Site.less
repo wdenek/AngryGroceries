@@ -45,6 +45,14 @@ ul.shopping-list {
         border-bottom: 1px solid @gray-lighter;
         margin-left: 0px;
     }
+
+    span.item-actions {
+        text-decoration: none;
+
+        a:hover i.icon-edit, a:hover i.icon-remove {
+            text-decoration: none;
+        }
+    }
 }
 
     ul.shopping-list.complete {
@@ -53,6 +61,14 @@ ul.shopping-list {
         span {
             text-decoration: line-through;
         }
+
+            span.item-actions {
+                text-decoration: none;
+
+                a:hover i.icon-edit, a:hover i.icon-remove {
+                    text-decoration: none;
+                }
+            }
 
         li.shopping-list-message span {
             text-decoration: none;

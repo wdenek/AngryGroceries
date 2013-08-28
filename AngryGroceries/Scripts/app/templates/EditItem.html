@@ -2,15 +2,15 @@
     <div class="modal-content">
         <div class="modal-header">
             <button type="button" class="close" ng-click="close(false)" aria-hidden="true">&times;</button>
-            <h4 class="modal-title">Create new shopping list</h4>
+            <h4 class="modal-title">Edit &quot;{{shoppingListItem.text}}&quot;</h4>
         </div>
         <div class="modal-body">
             <div class="alert alert-danger alert-dismissable" ng-show="errorMessage">
                 <strong>Error!</strong> {{errorMessage}}
             </div>
-            <p>Please enter the name of the new shopping list and click OK to create it.</p>
+            <p>Please enter the name of the item and click OK to save it.</p>
             <p>
-                <input type="text" ng-model="name" class="form-control" ng-instant-model />
+                <input type="text" ng-model="shoppingListItem.text" class="form-control" />
             </p>
         </div>
         <div class="modal-footer">

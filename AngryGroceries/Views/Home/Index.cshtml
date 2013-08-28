@@ -26,7 +26,7 @@
             </div>
 
             <div class="btn-group shopping-list-actions pull-right">
-                <a href="#" class="btn btn-default"><i class="icon-remove"></i>
+                <a href="#" class="btn btn-default" ng-click="removeShoppingList()"><i class="icon-remove"></i>
                     <span class="hidden-xs">Delete</span>
                 </a>
             </div>
@@ -57,6 +57,7 @@
         <ul class="shopping-list incomplete">
             <li ng-repeat="item in shoppingListItems | filter: filterIncompleteItems">
                 <input type="checkbox" ng-model="item.completed" />
+                <span class="item-actions pull-right"><a href="#" ng-click="editItem(item)"><i class="icon-edit"></i> Edit</a> <a href="#" ng-click="removeItem(item)"><i class="icon-remove"></i>  Remove</a></span>
                 <span>{{item.text}}</span>
             </li>
             <li ng-show="isEverythingCompleted()">
@@ -68,6 +69,7 @@
         <ul class="shopping-list complete">
             <li ng-repeat="item in shoppingListItems | filter: filterCompletedItems">
                 <input type="checkbox" ng-model="item.completed" />
+                <span class="item-actions pull-right"><a href="#" ng-click="editItem(item)"><i class="icon-edit"></i> Edit</a> <a href="#" ng-click="removeItem(item)"><i class="icon-remove"></i>  Remove</a></span>                
                 <span>{{item.text}}</span>
             </li>
             <li ng-show="isNothingCompleted()" class="shopping-list-message">

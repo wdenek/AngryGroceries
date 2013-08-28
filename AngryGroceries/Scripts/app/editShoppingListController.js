@@ -9,6 +9,6 @@
             return;
         }
 
-        dialog.close($scope.shoppingList);
+        dialog.close(result && $scope.shoppingList);
     };
 });

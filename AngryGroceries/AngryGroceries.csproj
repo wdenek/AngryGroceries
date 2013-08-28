@@ -60,7 +60,10 @@
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Scripts\app\app.js" />
     <Content Include="Scripts\app\createShoppingListController.js" />
+    <Content Include="Scripts\app\editItemController.js" />
     <Content Include="Scripts\app\editShoppingListController.js" />
+    <Content Include="Scripts\app\removeItemController.js" />
+    <Content Include="Scripts\app\removeShoppingListController.js" />
     <Content Include="Scripts\app\shoppingListController.js" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
@@ -108,6 +111,9 @@
     <None Include="Properties\PublishProfiles\AngryGroceries - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\AngryGroceries - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
+    <Content Include="Scripts\app\templates\RemoveShoppingList.html" />
+    <Content Include="Scripts\app\templates\RemoveItem.html" />
+    <Content Include="Scripts\app\templates\EditItem.html" />
     <Content Include="Scripts\app\templates\EditShoppingList.html" />
     <Content Include="Scripts\app\templates\CreateShoppingList.html" />
     <Content Include="Scripts\bootstrap.js" />
