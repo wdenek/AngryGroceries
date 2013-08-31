@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!-- 
+  Optional target to push documentation to relishapp.com
+  ......................................................
+  This is not required to work, but it is helpful for people to learn more about the app.
+  -->
+  <Target Name="GenerateRelishDocs">
+    <Message Importance="normal" Text="Pushing relish documentation"/>
+    <Exec WorkingDirectory="$(MSBuildProjectDirectory)" Command="relish push &quot;AngryGroceries/Core&quot;" IgnoreExitCode="true"/>
+  </Target>
+</Project>
