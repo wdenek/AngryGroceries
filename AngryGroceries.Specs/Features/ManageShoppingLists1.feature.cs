@@ -89,14 +89,12 @@ this.ScenarioSetup(scenarioInfo);
 #line 6
 this.FeatureBackground();
 #line 10
- testRunner.Given("I have not created a shopping list \"My second groceries list\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 11
  testRunner.When("I create a new shopping list", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 12
+#line 11
  testRunner.And("I enter the name \"My second groceries list\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 13
+#line 12
  testRunner.And("I accept the settings for the new shopping list", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 14
+#line 13
  testRunner.Then("I see the shopping list \"My second groceries list\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -108,19 +106,19 @@ this.FeatureBackground();
         public virtual void EditTheNameOfAShoppingList()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Edit the name of a shopping list", ((string[])(null)));
-#line 16
+#line 15
 this.ScenarioSetup(scenarioInfo);
 #line 6
 this.FeatureBackground();
-#line 17
+#line 16
  testRunner.Given("I have a shopping list \"Shipping list\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 18
+#line 17
  testRunner.When("I edit the shopping list", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 19
+#line 18
  testRunner.And("I enter \"Shopping list\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 20
+#line 19
  testRunner.And("I accept the settings for the shopping list", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 21
+#line 20
  testRunner.Then("I see the shopping list \"My shopping list\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -132,7 +130,7 @@ this.FeatureBackground();
         public virtual void RemoveAnExistingShoppingList()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Remove an existing shopping list", ((string[])(null)));
-#line 23
+#line 22
 this.ScenarioSetup(scenarioInfo);
 #line 6
 this.FeatureBackground();
@@ -143,13 +141,13 @@ this.FeatureBackground();
                         "Other shopping list"});
             table1.AddRow(new string[] {
                         "Shopping list"});
-#line 24
+#line 23
  testRunner.Given("I have the following shopping lists", ((string)(null)), table1, "Given ");
-#line 30
+#line 29
  testRunner.Given("I have selected \"Shopping list\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 31
+#line 30
  testRunner.When("I delete the shopping list", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 32
+#line 31
  testRunner.Then("The shopping list \"Other shopping list\" is selected", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();

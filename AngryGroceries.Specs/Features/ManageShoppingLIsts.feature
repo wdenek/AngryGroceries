@@ -7,7 +7,6 @@ Background:
 	Given I am logged on as a shopper
 
 Scenario: Create a new shopping list
-	Given I have not created a shopping list "My second groceries list"
 	When I create a new shopping list
 	And I enter the name "My second groceries list"
 	And I accept the settings for the new shopping list
