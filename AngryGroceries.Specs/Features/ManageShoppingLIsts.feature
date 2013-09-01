@@ -15,7 +15,7 @@ Scenario: Create a new shopping list
 Scenario: Edit the name of a shopping list
 	Given I have a shopping list "Shipping list"
 	When I edit the shopping list
-	And I enter "Shopping list"
+	And I change the name to "Shopping list"
 	And I accept the settings for the shopping list
 	Then I see the shopping list "My shopping list"
 

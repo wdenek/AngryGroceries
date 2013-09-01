@@ -7,8 +7,11 @@
         <div class="btn-toolbar shopping-list-actionbar">
             <div class="btn-group">
                 <div class="dropdown shopping-list-dropdown">
-                    <a class="btn" data-toggle="dropdown" data-target="shopping-list-dropdown-menu">
+                    <a class="btn" data-toggle="dropdown" data-target="shopping-list-dropdown-menu" ng-show="hasShoppingLists()">
                         <h1>{{selectedShoppingList.name}}</h1>
+                    </a>
+                    <a class="btn create-shopping-list-button" ng-show="!hasShoppingLists()" ng-click="createNewShoppingList()">
+                        <h1>Create new</h1>
                     </a>
                     <ul class="dropdown-menu shopping-list-dropdown-menu">
                         <li ng-repeat="item in shoppingLists"><a ng-click="selectShoppingList(item)">{{item.name}}</a></li>
@@ -26,13 +29,13 @@
             </div>
 
             <div class="btn-group shopping-list-actions pull-right">
-                <a href="#" class="btn btn-default" ng-click="removeShoppingList()"><i class="icon-remove"></i>
+                <a href="#" class="btn btn-default remove-shopping-list-button" ng-click="removeShoppingList()"><i class="icon-remove"></i>
                     <span class="hidden-xs">Delete</span>
                 </a>
             </div>
 
             <div class="btn-group shopping-list-actions pull-right">
-                <a href="#" class="btn btn-default" ng-click="editShoppingList()"><i class="icon-edit"></i>
+                <a href="#" class="btn btn-default edit-shopping-list-button" ng-click="editShoppingList()"><i class="icon-edit"></i>
                     <span class="hidden-xs">Edit</span>
                 </a>
             </div>
@@ -49,7 +52,10 @@
             </div>
         </form>
     </div>
-    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" ng-hide="hasItems()">
+    <div class="col-xs-12" ng-show="!hasShoppingLists()">
+        <p>Hmm, looks like you don't have a shoppinglist yet. Click on <a href="#" ng-click="createNewShoppingList()">Create new</a> to start creating one.</p>
+    </div>
+    <div class="col-xs-12" ng-hide="hasItems() || !hasShoppingLists()">
         <p>Ooh, there's nothing on this list. Better start gathering up those groceries!</p>
     </div>
 

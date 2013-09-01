@@ -37,6 +37,7 @@ namespace AngryGroceries.Specs.Util
         {
             // Use the web driver to navigate to the specified URL.
             _driver.Navigate().GoToUrl(new Uri(_baseUri, PatchRelativeUrl(relativeUrl)));
+            _driver.Navigate().Refresh();
 
             return CurrentPage<TPage>();
         }

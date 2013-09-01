@@ -26,8 +26,7 @@ namespace AngryGroceries.Specs.StepDefinitions
             var homepage = _browserScenario.Navigator.CurrentPage<ShoppingListPage>();
 
             // Use the shopping lists menu to create a new shopping list
-            homepage.ShoppingLists()
-                .CreateNew();
+            homepage.CreateShoppingList();
         }
 
         [When(@"I enter the name ""(.*)""")]
@@ -49,56 +48,77 @@ namespace AngryGroceries.Specs.StepDefinitions
         {
             var homepage = _browserScenario.Navigator.CurrentPage<ShoppingListPage>();
 
-            homepage.ShoppingLists()
-                .WithItem(name, element => Assert.IsNotNull(element, "Shopping list is not visible."));
+            homepage.WithSelectedShoppingList(element => Assert.IsNotNull(element, "Shopping list not visible."));
         }
 
         [Given(@"I have a shopping list ""(.*)""")]
-        public void GivenIHaveAShoppingList(string p0)
+        public void GivenIHaveAShoppingList(string name)
         {
-            ScenarioContext.Current.Pending();
+            var homepage = _browserScenario.Navigator.CurrentPage<ShoppingListPage>();
+
+            homepage
+                .CreateShoppingList()
+                .EnterName(name)
+                .Accept();
         }
 
         [When(@"I edit the shopping list")]
         public void WhenIEditTheShoppingList()
         {
-            ScenarioContext.Current.Pending();
+            var homepage = _browserScenario.Navigator.CurrentPage<ShoppingListPage>();
+            homepage.EditShoppingList();
         }
 
-        [When(@"I enter ""(.*)""")]
-        public void WhenIEnter(string p0)
+        [When(@"I change the name to ""(.*)""")]
+        public void WhenIEnter(string name)
         {
-            ScenarioContext.Current.Pending();
+            var homepage = _browserScenario.Navigator.CurrentPage<ShoppingListPage>();
+            homepage.EditShoppingListDialog().EnterName(name);
         }
 
         [When(@"I accept the settings for the shopping list")]
         public void WhenIAcceptTheSettingsForTheShoppingList()
         {
-            ScenarioContext.Current.Pending();
+            var homepage = _browserScenario.Navigator.CurrentPage<ShoppingListPage>();
+            homepage.EditShoppingListDialog().Accept();
         }
 
         [Given(@"I have the following shopping lists")]
         public void GivenIHaveTheFollowingShoppingLists(Table table)
         {
-            ScenarioContext.Current.Pending();
+            var homepage = _browserScenario.Navigator.CurrentPage<ShoppingListPage>();
+
+            foreach (var row in table.Rows)
+            {
+                homepage
+                    .CreateShoppingList()
+                    .EnterName(row["name"])
+                    .Accept();
+            }
         }
 
         [Given(@"I have selected ""(.*)""")]
-        public void GivenIHaveSelected(string p0)
+        public void GivenIHaveSelected(string name)
         {
-            ScenarioContext.Current.Pending();
+            var homepage = _browserScenario.Navigator.CurrentPage<ShoppingListPage>();
+
+            homepage.ShoppingLists().SelectShoppingList(name);
         }
 
         [When(@"I delete the shopping list")]
         public void WhenIDeleteTheShoppingList()
         {
-            ScenarioContext.Current.Pending();
+            var homepage = _browserScenario.Navigator.CurrentPage<ShoppingListPage>();
+
+            homepage.DeleteShoppingList().Accept();
         }
 
         [Then(@"The shopping list ""(.*)"" is selected")]
-        public void ThenTheShoppingListIsSelected(string p0)
+        public void ThenTheShoppingListIsSelected(string name)
         {
-            ScenarioContext.Current.Pending();
+            var homepage = _browserScenario.Navigator.CurrentPage<ShoppingListPage>();
+
+            homepage.WithSelectedShoppingList(item => Assert.AreEqual(name,item.Text,"Wrong shopping list selected."));
         }
 
     }

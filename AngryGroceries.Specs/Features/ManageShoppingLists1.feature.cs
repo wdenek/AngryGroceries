@@ -115,7 +115,7 @@ this.FeatureBackground();
 #line 17
  testRunner.When("I edit the shopping list", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 18
- testRunner.And("I enter \"Shopping list\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("I change the name to \"Shopping list\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 19
  testRunner.And("I accept the settings for the shopping list", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 20

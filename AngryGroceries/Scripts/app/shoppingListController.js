@@ -5,13 +5,7 @@
 
     $scope.shoppingListItems = [];
 
-    $scope.shoppingLists = [{
-        id: 1,
-        name: "My first list"
-    }, {
-        id: 2,
-        name: "My second list"
-    }];
+    $scope.shoppingLists = [];
 
     // Public functions
     //----------------------------------------
@@ -171,6 +165,10 @@
         return $scope.shoppingListItems.length;
     };
 
+    $scope.hasShoppingLists = function() {
+        return $scope.shoppingLists.length;
+    };
+    
     $scope.isEverythingCompleted = function () {
         for (var index = 0; index < $scope.shoppingListItems.length; index++) {
             if (!$scope.shoppingListItems[index].completed) return false;

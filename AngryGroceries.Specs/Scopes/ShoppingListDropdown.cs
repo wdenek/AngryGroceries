@@ -22,7 +22,7 @@ namespace AngryGroceries.Specs.Scopes
         public ShoppingListDropdown(IWebDriver driver, ShoppingListPage page)
             : base(driver, page)
         {
-            
+
         }
 
         /// <summary>
@@ -65,11 +65,11 @@ namespace AngryGroceries.Specs.Scopes
         /// Creates a new shopping list
         /// </summary>
         /// <returns></returns>
-        public ShoppingListDropdown CreateNew()
+        public CreateShoppingListDialog CreateNew()
         {
             WithItem("Create new", element => element.Click());
 
-            return this;
+            return Then().CreateShoppingListDialog();
         }
     }
 }

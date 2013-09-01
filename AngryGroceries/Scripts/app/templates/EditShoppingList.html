@@ -1,4 +1,4 @@
-﻿<div class="modal-dialog">
+﻿<div class="modal-dialog edit-shopping-list-dialog">
     <div class="modal-content">
         <div class="modal-header">
             <button type="button" class="close" ng-click="close(false)" aria-hidden="true">&times;</button>
@@ -10,12 +10,12 @@
             </div>
             <p>Please enter the name of the shopping list and click OK to save it.</p>
             <p>
-                <input type="text" ng-model="shoppingList.name" class="form-control" />
+                <input type="text" ng-model="shoppingList.name" class="form-control shopping-list-name" />
             </p>
         </div>
         <div class="modal-footer">
-            <button ng-click="close(true)" class="col-xs-2 btn btn-primary">OK</button>
-            <button ng-click="close(false)" class="col-xs-2 btn btn-default">Cancel</button>
+            <button ng-click="close(true)" class="col-xs-2 btn btn-primary accept-button">OK</button>
+            <button ng-click="close(false)" class="col-xs-2 btn btn-default cancel-button">Cancel</button>
         </div>
     </div>
 </div>

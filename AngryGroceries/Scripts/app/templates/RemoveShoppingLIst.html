@@ -1,4 +1,4 @@
-﻿<div class="modal-dialog">
+﻿<div class="modal-dialog remove-shopping-list-dialog">
     <div class="modal-content">
         <div class="modal-header">
             <button type="button" class="close" ng-click="close(false)" aria-hidden="true">&times;</button>
@@ -8,8 +8,8 @@
             <p>Are you sure you want to remove &quot;{{shoppingList.name}}"?</p>
         </div>
         <div class="modal-footer">
-            <button ng-click="close(true)" class="col-xs-2 btn btn-primary">Yes</button>
-            <button ng-click="close(false)" class="col-xs-2 btn btn-default">No</button>
+            <button ng-click="close(true)" class="col-xs-2 btn btn-primary accept-button">Yes</button>
+            <button ng-click="close(false)" class="col-xs-2 btn btn-default cancel-button">No</button>
         </div>
     </div>
 </div>
