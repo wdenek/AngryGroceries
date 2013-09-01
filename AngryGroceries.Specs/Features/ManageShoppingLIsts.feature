@@ -26,6 +26,6 @@ Scenario: Remove an existing shopping list
 	| Other shopping list |
 	| Shopping list       |
 	 
-	Given I have selected "Shopping list"
+	And I have selected "Shopping list"
 	When I delete the shopping list
 	Then The shopping list "Other shopping list" is selected

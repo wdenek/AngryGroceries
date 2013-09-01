@@ -144,7 +144,7 @@ this.FeatureBackground();
 #line 23
  testRunner.Given("I have the following shopping lists", ((string)(null)), table1, "Given ");
 #line 29
- testRunner.Given("I have selected \"Shopping list\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.And("I have selected \"Shopping list\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 30
  testRunner.When("I delete the shopping list", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 31

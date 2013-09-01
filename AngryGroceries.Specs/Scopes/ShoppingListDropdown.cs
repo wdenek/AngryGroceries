@@ -35,7 +35,7 @@ namespace AngryGroceries.Specs.Scopes
             Driver.FindElement(By.CssSelector(".shopping-list-dropdown")).Click();
             var menuElement = Driver.WaitFor(driver => driver
                 .FindElements(By.CssSelector(".shopping-list-dropdown .dropdown-menu li"))
-                .FirstOrDefault(item => item.Text.ToLower().Contains(name.ToLower())));
+                .FirstOrDefault(item => item.Text.ToLower() == name.ToLower()));
 
             menuElement.Click();
 
