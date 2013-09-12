@@ -1,8 +1,13 @@
-﻿namespace AngryGroceries.Data
+﻿using System.Collections.Generic;
+using Microsoft.AspNet.Identity.EntityFramework;
+
+namespace AngryGroceries.Data
 {
     public class List
     {
-        public int Id { get; set; }
-        public string  Name { get; set; }
+        public virtual int Id { get; set; }
+        public virtual string Name { get; set; }
+        public virtual ICollection<Grocery> Groceries { get; set; }
+        public virtual ICollection<AngryUser> Users { get; set; }
     }
 }

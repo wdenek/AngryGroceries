@@ -47,17 +47,19 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AccountApiController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Data\AngryUser.cs" />
     <Compile Include="Data\Grocery.cs" />
     <Compile Include="Data\GroceryDbContext.cs" />
     <Compile Include="Data\List.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201309071956348_AddList.cs" />
-    <Compile Include="Migrations\201309071956348_AddList.Designer.cs">
-      <DependentUpon>201309071956348_AddList.cs</DependentUpon>
+    <Compile Include="Migrations\201309122010528_Default tables.cs" />
+    <Compile Include="Migrations\201309122010528_Default tables.Designer.cs">
+      <DependentUpon>201309122010528_Default tables.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -613,8 +615,8 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201309071956348_AddList.resx">
-      <DependentUpon>201309071956348_AddList.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201309122010528_Default tables.resx">
+      <DependentUpon>201309122010528_Default tables.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
