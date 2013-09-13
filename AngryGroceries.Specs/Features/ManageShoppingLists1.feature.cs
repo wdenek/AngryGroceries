@@ -125,11 +125,11 @@ this.FeatureBackground();
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Remove an existing shopping list")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Removing a shopping list selects the first existing list")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Manage shopping lists")]
-        public virtual void RemoveAnExistingShoppingList()
+        public virtual void RemovingAShoppingListSelectsTheFirstExistingList()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Remove an existing shopping list", ((string[])(null)));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Removing a shopping list selects the first existing list", ((string[])(null)));
 #line 22
 this.ScenarioSetup(scenarioInfo);
 #line 6
@@ -141,14 +141,34 @@ this.FeatureBackground();
                         "Other shopping list"});
             table1.AddRow(new string[] {
                         "Shopping list"});
-#line 23
+#line 27
  testRunner.Given("I have the following shopping lists", ((string)(null)), table1, "Given ");
-#line 29
+#line 33
  testRunner.And("I have selected \"Shopping list\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 30
+#line 34
  testRunner.When("I delete the shopping list", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 31
+#line 35
  testRunner.Then("The shopping list \"Other shopping list\" is selected", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Removing the last shopping lists displays the Create new button")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Manage shopping lists")]
+        public virtual void RemovingTheLastShoppingListsDisplaysTheCreateNewButton()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Removing the last shopping lists displays the Create new button", ((string[])(null)));
+#line 37
+this.ScenarioSetup(scenarioInfo);
+#line 6
+this.FeatureBackground();
+#line 39
+ testRunner.Given("I have a shopping list \"list of groceries\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 40
+ testRunner.When("I delete the shopping list", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 41
+ testRunner.Then("the create new button is displayed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

@@ -8,9 +8,9 @@ using OpenQA.Selenium;
 
 namespace AngryGroceries.Specs.Scopes
 {
-    public class CreateShoppingListDialog: ScopeObject<ShoppingListPage>
+    public class CreateShoppingListDialog: DialogObject<ShoppingListPage>
     {
-        public CreateShoppingListDialog(IWebDriver driver, ShoppingListPage page) : base(driver, page)
+        public CreateShoppingListDialog(IWebDriver driver, ShoppingListPage page) : base(driver, page,"create-shopping-list-dialog")
         {
         }
 
@@ -21,24 +21,12 @@ namespace AngryGroceries.Specs.Scopes
         /// <returns></returns>
         public CreateShoppingListDialog EnterName(string name)
         {
-            var textBox = Driver.FindElement(By.CssSelector(".modal-dialog.create-shopping-list-dialog .shopping-list-name"));
+            var textBox = RootElement.FindElement(By.CssSelector(".shopping-list-name"));
 
             textBox.Clear();
             textBox.SendKeys(name);
 
             return this;
-        }
-
-        /// <summary>
-        /// Accepts the settings in the dialog
-        /// </summary>
-        /// <returns></returns>
-        public ShoppingListPage Accept()
-        {
-            var acceptButton = Driver.FindElement(By.CssSelector(".modal-dialog.create-shopping-list-dialog .accept-button"));
-            acceptButton.Click();
-
-            return Then();
         }
     }
 }

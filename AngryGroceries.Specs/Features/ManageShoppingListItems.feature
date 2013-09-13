@@ -9,29 +9,36 @@ Background:
 	And I have a shopping list "list of groceries"
 	
 Scenario: Add item to the shopping list
-	Given I have not added "Pickles"
-	When I add "Pickles" 
+	When I add "Pickles" to the shopping list
 	Then I see "Pickles" in the uncompleted items list
 	
-Scenario: Remove item from the shopping list
+Scenario: Remove item from the pending items
 	Given I have added "Pickles" to the shopping list 
-	When I remove "Pickles" from the shopping list 
-	Then I no longer see "Pickles" on the shopping list 
+	Then I see "Pickles" in the uncompleted items list
+	When I remove "Pickles" from the pending items 
+	Then I no longer see "Pickles" in the pending items
+
+Scenario: Remove item from the completed items
+	Given I have added "Pickles" to the shopping list 
+	Then I see "Pickles" in the uncompleted items list
+	When I mark "Pickles" as completed
+	When I remove "Pickles" from the completed items 
+	Then I no longer see "Pickles" in the completed items
 	
 Scenario: Edit item on the shopping list
 	Given I have added "Pickles" to the shopping list 
-	When I change "Pickles" into "Gherkins" 
-	Then I see "Gherkins" on the shopping list
+	When I change "Pickles" into "Gherkins" in the pending items
+	Then I see "Gherkins" in the pending items
 	
 Scenario: Mark item on the shopping list as completed
 	Given I have added "Pickles" to the shopping list 
 	When I mark "Pickles" as completed
-	Then I no longer see "Pickles" as uncompleted on the shopping list
-	And I see "Pickles" as completed on the shopping list
+	Then I no longer see "Pickles" in the pending items
+	Then I see "Pickles" in the completed items
 
 Scenario: Mark item on the shopping list as uncompleted
 	Given I have added "Pickles" to the shopping list 
 	And I have marked "Pickles" as completed
 	When I mark "Pickles" as uncompleted
-	Then I no longer see "Pickles" as completed on the shopping list
-	And I see "Pickles" as uncompleted on the shopping list
+	Then I no longer see "Pickles" in the completed items
+	And I see "Pickles" in the pending items

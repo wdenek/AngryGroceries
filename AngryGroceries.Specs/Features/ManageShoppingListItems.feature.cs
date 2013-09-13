@@ -92,31 +92,55 @@ this.ScenarioSetup(scenarioInfo);
 #line 7
 this.FeatureBackground();
 #line 12
- testRunner.Given("I have not added \"Pickles\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.When("I add \"Pickles\" to the shopping list", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 13
- testRunner.When("I add \"Pickles\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 14
  testRunner.Then("I see \"Pickles\" in the uncompleted items list", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Remove item from the shopping list")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Remove item from the pending items")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Keep track of groceries")]
-        public virtual void RemoveItemFromTheShoppingList()
+        public virtual void RemoveItemFromThePendingItems()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Remove item from the shopping list", ((string[])(null)));
-#line 16
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Remove item from the pending items", ((string[])(null)));
+#line 15
 this.ScenarioSetup(scenarioInfo);
 #line 7
 this.FeatureBackground();
-#line 17
+#line 16
  testRunner.Given("I have added \"Pickles\" to the shopping list", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 17
+ testRunner.Then("I see \"Pickles\" in the uncompleted items list", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 18
- testRunner.When("I remove \"Pickles\" from the shopping list", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("I remove \"Pickles\" from the pending items", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 19
- testRunner.Then("I no longer see \"Pickles\" on the shopping list", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("I no longer see \"Pickles\" in the pending items", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Remove item from the completed items")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Keep track of groceries")]
+        public virtual void RemoveItemFromTheCompletedItems()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Remove item from the completed items", ((string[])(null)));
+#line 21
+this.ScenarioSetup(scenarioInfo);
+#line 7
+this.FeatureBackground();
+#line 22
+ testRunner.Given("I have added \"Pickles\" to the shopping list", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 23
+ testRunner.Then("I see \"Pickles\" in the uncompleted items list", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 24
+ testRunner.When("I mark \"Pickles\" as completed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 25
+ testRunner.When("I remove \"Pickles\" from the completed items", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 26
+ testRunner.Then("I no longer see \"Pickles\" in the completed items", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -127,16 +151,16 @@ this.FeatureBackground();
         public virtual void EditItemOnTheShoppingList()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Edit item on the shopping list", ((string[])(null)));
-#line 21
+#line 28
 this.ScenarioSetup(scenarioInfo);
 #line 7
 this.FeatureBackground();
-#line 22
+#line 29
  testRunner.Given("I have added \"Pickles\" to the shopping list", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 23
- testRunner.When("I change \"Pickles\" into \"Gherkins\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 24
- testRunner.Then("I see \"Gherkins\" on the shopping list", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 30
+ testRunner.When("I change \"Pickles\" into \"Gherkins\" in the pending items", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 31
+ testRunner.Then("I see \"Gherkins\" in the pending items", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -147,18 +171,18 @@ this.FeatureBackground();
         public virtual void MarkItemOnTheShoppingListAsCompleted()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Mark item on the shopping list as completed", ((string[])(null)));
-#line 26
+#line 33
 this.ScenarioSetup(scenarioInfo);
 #line 7
 this.FeatureBackground();
-#line 27
+#line 34
  testRunner.Given("I have added \"Pickles\" to the shopping list", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 28
+#line 35
  testRunner.When("I mark \"Pickles\" as completed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 29
- testRunner.Then("I no longer see \"Pickles\" as uncompleted on the shopping list", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 30
- testRunner.And("I see \"Pickles\" as completed on the shopping list", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 36
+ testRunner.Then("I no longer see \"Pickles\" in the pending items", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 37
+ testRunner.Then("I see \"Pickles\" in the completed items", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -169,20 +193,20 @@ this.FeatureBackground();
         public virtual void MarkItemOnTheShoppingListAsUncompleted()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Mark item on the shopping list as uncompleted", ((string[])(null)));
-#line 32
+#line 39
 this.ScenarioSetup(scenarioInfo);
 #line 7
 this.FeatureBackground();
-#line 33
+#line 40
  testRunner.Given("I have added \"Pickles\" to the shopping list", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 34
+#line 41
  testRunner.And("I have marked \"Pickles\" as completed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 35
+#line 42
  testRunner.When("I mark \"Pickles\" as uncompleted", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 36
- testRunner.Then("I no longer see \"Pickles\" as completed on the shopping list", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 37
- testRunner.And("I see \"Pickles\" as uncompleted on the shopping list", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 43
+ testRunner.Then("I no longer see \"Pickles\" in the completed items", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 44
+ testRunner.And("I see \"Pickles\" in the pending items", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
         }

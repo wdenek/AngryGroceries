@@ -7,6 +7,7 @@ using AngryGroceries.Specs.Scopes;
 using AngryGroceries.Specs.Util;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
+using System.Threading;
 
 namespace AngryGroceries.Specs.Pages
 {
@@ -93,12 +94,57 @@ namespace AngryGroceries.Specs.Pages
             return new EditShoppingListDialog(Driver, this);
         }
 
+        /// <summary>
+        /// Deletes the currently selected shopping list
+        /// </summary>
+        /// <returns></returns>
         public DeleteShoppingListDialog DeleteShoppingList()
         {
             var element = Driver.FindElement(By.CssSelector(".remove-shopping-list-button"));
             element.Click();
 
             return new DeleteShoppingListDialog(Driver,this);
+        }
+
+        /// <summary>
+        /// Executes an assertion on the create shopping list button
+        /// </summary>
+        /// <param name="action"></param>
+        public void WithCreateShoppingListButton(Action<IWebElement> action)
+        {
+            Thread.Sleep(TimeSpan.FromSeconds(5));
+
+            var createButton = Driver.WaitFor(driver => driver.FindElement(
+                By.CssSelector(".create-shopping-list-button")));
+
+            action(createButton);
+        }
+
+        /// <summary>
+        /// Enters the create new shopping list item scope
+        /// </summary>
+        /// <returns></returns>
+        public CreateShoppingListItemForm CreateNewItem()
+        {
+            return new CreateShoppingListItemForm(Driver,this);
+        }
+
+        /// <summary>
+        /// Enters the completed items scope
+        /// </summary>
+        /// <returns></returns>
+        public ShoppingListItems CompletedItems()
+        {
+            return new ShoppingListItems(Driver, this, "completed-items");
+        }
+
+        /// <summary>
+        /// Enters the pending items scope
+        /// </summary>
+        /// <returns></returns>
+        public ShoppingListItems PendingItems()
+        {
+            return new ShoppingListItems(Driver, this, "pending-items");
         }
     }
 }

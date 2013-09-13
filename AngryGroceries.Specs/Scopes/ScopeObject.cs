@@ -27,5 +27,10 @@ namespace AngryGroceries.Specs.Scopes
         {
             return _page;
         }
+
+        public TPage Parent
+        {
+            get { return _page; }
+        }
     }
 }

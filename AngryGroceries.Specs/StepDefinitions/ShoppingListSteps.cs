@@ -121,5 +121,13 @@ namespace AngryGroceries.Specs.StepDefinitions
             homepage.WithSelectedShoppingList(item => Assert.AreEqual(name,item.Text,"Wrong shopping list selected."));
         }
 
+        [Then(@"the create new button is displayed")]
+        public void ThenTheCreateNewButtonIsDisplayed()
+        {
+            var homepage = _browserScenario.Navigator.CurrentPage<ShoppingListPage>();
+
+            homepage.WithCreateShoppingListButton(
+                element => Assert.IsTrue(element.Displayed, "Create new button not visible"));
+        }
     }
 }

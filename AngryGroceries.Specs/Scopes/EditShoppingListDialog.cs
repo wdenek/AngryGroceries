@@ -11,14 +11,14 @@ namespace AngryGroceries.Specs.Scopes
     /// <summary>
     /// Definition for the edit shopping list dialog element.
     /// </summary>
-    public class EditShoppingListDialog: ScopeObject<ShoppingListPage>
+    public class EditShoppingListDialog: DialogObject<ShoppingListPage>
     {
         /// <summary>
         /// Initializes a new instance of <see cref="EditShoppingListDialog"/>
         /// </summary>
         /// <param name="driver"></param>
         /// <param name="page"></param>
-        public EditShoppingListDialog(IWebDriver driver, ShoppingListPage page) : base(driver, page)
+        public EditShoppingListDialog(IWebDriver driver, ShoppingListPage page) : base(driver, page,"shopping-list-dialog")
         {
         }
 
@@ -29,24 +29,12 @@ namespace AngryGroceries.Specs.Scopes
         /// <returns></returns>
         public EditShoppingListDialog EnterName(string name)
         {
-            var textBox = Driver.FindElement(By.CssSelector(".modal-dialog.edit-shopping-list-dialog .shopping-list-name"));
+            var textBox = RootElement.FindElement(By.CssSelector(".shopping-list-name"));
 
             textBox.Clear();
             textBox.SendKeys(name);
 
             return this;
-        }
-
-        /// <summary>
-        /// Accepts the settings in the dialog
-        /// </summary>
-        /// <returns></returns>
-        public ShoppingListPage Accept()
-        {
-            var acceptButton = Driver.FindElement(By.CssSelector(".modal-dialog.edit-shopping-list-dialog .accept-button"));
-            acceptButton.Click();
-
-            return Then();
         }
     }
 }

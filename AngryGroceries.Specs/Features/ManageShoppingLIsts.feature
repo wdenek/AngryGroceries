@@ -19,7 +19,11 @@ Scenario: Edit the name of a shopping list
 	And I accept the settings for the shopping list
 	Then I see the shopping list "My shopping list"
 
-Scenario: Remove an existing shopping list
+Scenario: Removing a shopping list selects the first existing list
+
+	A user can remove a shopping list. If there's another existing list,
+	make sure that the list is selected, so that the user can continue working.
+
 	Given I have the following shopping lists
 	
 	| name                |
@@ -29,3 +33,9 @@ Scenario: Remove an existing shopping list
 	And I have selected "Shopping list"
 	When I delete the shopping list
 	Then The shopping list "Other shopping list" is selected
+
+Scenario: Removing the last shopping lists displays the Create new button
+	
+	Given I have a shopping list "list of groceries"
+	When I delete the shopping list
+	Then the create new button is displayed

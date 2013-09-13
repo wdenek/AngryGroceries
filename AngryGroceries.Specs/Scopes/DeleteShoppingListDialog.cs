@@ -8,18 +8,11 @@ using OpenQA.Selenium;
 
 namespace AngryGroceries.Specs.Scopes
 {
-    public class DeleteShoppingListDialog: ScopeObject<ShoppingListPage>
+    public class DeleteShoppingListDialog: DialogObject<ShoppingListPage>
     {
-        public DeleteShoppingListDialog(IWebDriver driver, ShoppingListPage page) : base(driver, page)
+        public DeleteShoppingListDialog(IWebDriver driver, ShoppingListPage page)
+            : base(driver, page, "remove-shopping-list-dialog")
         {
-        }
-
-        public ShoppingListPage Accept()
-        {
-            var acceptButton = Driver.FindElement(By.CssSelector(".modal-dialog.remove-shopping-list-dialog .accept-button"));
-            acceptButton.Click();
-
-            return Then();
         }
     }
 }
