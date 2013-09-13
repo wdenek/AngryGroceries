@@ -23,7 +23,7 @@
     }
     
     function updateShoppingList(shoppingList) {
-        return $http.put('/api/shoppinglists/', shoppingList).then(function(result) {
+        return $http.put('/api/shoppinglists/' + shoppingList.Id, shoppingList).then(function(result) {
             return result.data;
         });
     }

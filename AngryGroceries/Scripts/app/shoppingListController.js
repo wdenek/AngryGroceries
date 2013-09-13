@@ -9,7 +9,7 @@
 
     // Private functions
     //----------------------------------------
-    function updateShoppingLists() {
+    function updateShoppingLists(selectedListId) {
         shoppingListService.getShoppingLists().then(function (data) {
             // Clear the shopping lists by setting the length to zero.
             $scope.shoppingLists.length = 0;
@@ -19,8 +19,18 @@
                 $scope.shoppingLists.push(data[i]);
             }
             
-            // Select the last shopping list in the dropdown.
-            $scope.selectShoppingList($scope.shoppingLists[$scope.shoppingLists.length - 1]);
+            if (selectedListId) {
+                for (var j = 0; j < $scope.shoppingLists.length; j++) {
+                    if ($scope.shoppingLists[j].Id == selectedListId) {
+                        $scope.selectShoppingList($scope.shoppingLists[j]);
+                        break;
+                    }
+                }
+            } else {
+                // Select the last shopping list in the dropdown
+                // when no list was previously selected.
+                $scope.selectShoppingList($scope.shoppingLists[$scope.shoppingLists.length - 1]);
+            }
         });
     }
 
@@ -75,8 +85,9 @@
         dlg.open("/Scripts/app/templates/EditShoppingList.html", "EditShoppingListController").then(function (result) {
             if (!result) return;
 
-            // Copy over the changed attributes of the updated shopping list entity.
-            $scope.selectedShoppingList.name = result.name;
+            shoppingListService.updateShoppingList(result).then(function() {
+                updateShoppingLists(result.Id);
+            });
         });
     };
     
@@ -96,10 +107,9 @@
         dialog.open("/Scripts/app/templates/RemoveShoppingList.html", "RemoveShoppingListController").then(function (result) {
             if (!result) return;
 
-            // Use splice to remove the shopping list from the list.
-            // This manipulates the array in-place.
-            $scope.shoppingLists.splice($scope.shoppingLists.indexOf($scope.selectedShoppingList), 1);
-            $scope.selectShoppingList($scope.shoppingLists[0]);
+            shoppingListService.deleteShoppingList($scope.selectedShoppingList.Id).then(function() {
+                updateShoppingLists();
+            });
         });
     };
 
