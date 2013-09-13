@@ -21,20 +21,20 @@
                 </div>
             </div>
 
-            <div class="btn-group shopping-list-actions pull-right">
+            <div class="btn-group shopping-list-actions pull-right" ng-show="hasShoppingLists()">
                 <a href="#" class="btn btn-default">
                     <i class="icon-share"></i>
                     <span class="hidden-xs">Share</span>
                 </a>
             </div>
 
-            <div class="btn-group shopping-list-actions pull-right">
+            <div class="btn-group shopping-list-actions pull-right" ng-show="hasShoppingLists()">
                 <a href="#" class="btn btn-default remove-shopping-list-button" ng-click="removeShoppingList()"><i class="icon-remove"></i>
                     <span class="hidden-xs">Delete</span>
                 </a>
             </div>
 
-            <div class="btn-group shopping-list-actions pull-right">
+            <div class="btn-group shopping-list-actions pull-right" ng-show="hasShoppingLists()">
                 <a href="#" class="btn btn-default edit-shopping-list-button" ng-click="editShoppingList()"><i class="icon-edit"></i>
                     <span class="hidden-xs">Edit</span>
                 </a>
@@ -42,7 +42,7 @@
         </div>
     </div>
 
-    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" ng-show="hasShoppingLists()">
         <form ng-submit="addItem()">
             <div class="input-group create-item-control">
                 <input type="text" id="add-item-box" class="form-control" ng-model="newItemText" ng-instant-model />
