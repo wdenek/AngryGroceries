@@ -6,6 +6,7 @@ using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using AngryGroceries.App_Start;
 
 namespace AngryGroceries
 {
@@ -21,6 +22,8 @@ namespace AngryGroceries
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            DatabaseConfig.Configure();
         }
     }
 }

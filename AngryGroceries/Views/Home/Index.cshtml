@@ -8,13 +8,13 @@
             <div class="btn-group">
                 <div class="dropdown shopping-list-dropdown">
                     <a class="btn" data-toggle="dropdown" data-target="shopping-list-dropdown-menu" ng-show="hasShoppingLists()">
-                        <h1>{{selectedShoppingList.name}}</h1>
+                        <h1>{{selectedShoppingList.Name}}</h1>
                     </a>
                     <a class="btn create-shopping-list-button" ng-show="!hasShoppingLists()" ng-click="createNewShoppingList()">
                         <h1>Create new</h1>
                     </a>
                     <ul class="dropdown-menu shopping-list-dropdown-menu">
-                        <li ng-repeat="item in shoppingLists"><a ng-click="selectShoppingList(item)">{{item.name}}</a></li>
+                        <li ng-repeat="item in shoppingLists"><a ng-click="selectShoppingList(item)">{{item.Name}}</a></li>
                         <li class="divider"></li>
                         <li><a ng-click="createNewShoppingList()">Create new</a></li>
                     </ul>

@@ -1,4 +1,4 @@
-﻿angular.module('AngryGroceries').controller('ShoppingListController', ["$scope", "$dialog", function ($scope, $dialog) {
+﻿angular.module('AngryGroceries').controller('ShoppingListController', ["$scope", "$dialog","shoppingListService", function ($scope, $dialog,shoppingListService) {
     // Public properties
     //----------------------------------------
     $scope.newItemText = "";
@@ -6,6 +6,23 @@
     $scope.shoppingListItems = [];
 
     $scope.shoppingLists = [];
+
+    // Private functions
+    //----------------------------------------
+    function updateShoppingLists() {
+        shoppingListService.getShoppingLists().then(function (data) {
+            // Clear the shopping lists by setting the length to zero.
+            $scope.shoppingLists.length = 0;
+            
+            // Load the new shopping lists into the UI.
+            for (var i = 0; i < data.length; i++) {
+                $scope.shoppingLists.push(data[i]);
+            }
+            
+            // Select the last shopping list in the dropdown.
+            $scope.selectShoppingList($scope.shoppingLists[$scope.shoppingLists.length - 1]);
+        });
+    }
 
     // Public functions
     //----------------------------------------
@@ -36,13 +53,9 @@
             if (!result) return;
 
             // Add the new shopping list to the collection
-            $scope.shoppingLists.push({
-                id: $scope.shoppingLists.length,
-                name: result
+            shoppingListService.createShoppingList(result).then(function() {
+                updateShoppingLists();
             });
-
-            // Select the newly created shopping list
-            $scope.selectShoppingList($scope.shoppingLists[$scope.shoppingLists.length - 1]);
         });
     };
 
@@ -190,5 +203,5 @@
 
     // Initialization
     //----------------------------------------
-    $scope.selectShoppingList($scope.shoppingLists[0]);
+    updateShoppingLists();
 }]);
