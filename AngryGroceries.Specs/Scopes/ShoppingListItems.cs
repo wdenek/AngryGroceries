@@ -28,14 +28,14 @@ namespace AngryGroceries.Specs.Scopes
             return this;
         }
 
-        public ShoppingListItems RemoveItem(string text)
+        public RemoveItemDialog RemoveItem(string text)
         {
             var element = FindShoppingListItem(text);
             var removeButton = element.FindElement(By.CssSelector(".remove-item-link"));
 
             removeButton.Click();
 
-            return this;
+            return new RemoveItemDialog(Driver,this.Parent);
         }
 
         public EditShoppingListItemDialog EditItem(string text)

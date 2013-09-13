@@ -25,7 +25,6 @@
     };
 
     $scope.createNewShoppingList = function () {
-
         // Open the dialog and when it's complete, use the callback to store the shopping list.
         var dlg = $dialog.dialog({
             backdrop: true,
@@ -48,6 +47,8 @@
     };
 
     $scope.editShoppingList = function () {
+        if ($scope.shoppingLists.length == 0) return;
+
         var dlg = $dialog.dialog({
             // Use a custom resolve to pass in the shopping list that is currently selected.
             // A copy is used to make the dialog somewhat transactional here.
@@ -67,6 +68,8 @@
     };
     
     $scope.removeShoppingList = function () {
+        if ($scope.shoppingLists.length == 0) return;
+
         var dialog = $dialog.dialog({
             // Use a custom resolve to pass in the shopping list that is currently selected.
             // A copy is used to make the dialog somewhat transactional here.
@@ -79,10 +82,6 @@
 
         dialog.open("/Scripts/app/templates/RemoveShoppingList.html", "RemoveShoppingListController").then(function (result) {
             if (!result) return;
-
-            // Do not remove anything if this is the last shopping list.
-            // TODO: Display a useful message to the user when this happens.
-            if ($scope.shoppingLists.length === 1) return;
 
             // Use splice to remove the shopping list from the list.
             // This manipulates the array in-place.

@@ -83,6 +83,7 @@
     <Compile Include="Scopes\DialogObject.cs" />
     <Compile Include="Scopes\EditShoppingListDialog.cs" />
     <Compile Include="Scopes\EditShoppingListItemDialog.cs" />
+    <Compile Include="Scopes\RemoveItemDialog.cs" />
     <Compile Include="Scopes\ScopeObject.cs" />
     <Compile Include="Scopes\CreateShoppingListDialog.cs" />
     <Compile Include="Scopes\ShoppingListItems.cs" />
@@ -131,6 +132,7 @@
   <ItemGroup>
     <Content Include="Util\Drivers\chromedriver.exe" />
     <Content Include="Util\Drivers\IEDriverServer.exe" />
+    <Content Include="Util\Drivers\phantomjs.exe" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">

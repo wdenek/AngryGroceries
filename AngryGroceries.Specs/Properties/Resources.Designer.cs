@@ -79,5 +79,15 @@ namespace AngryGroceries.Specs.Properties {
                 return ((byte[])(obj));
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] phantomjs {
+            get {
+                object obj = ResourceManager.GetObject("phantomjs", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
     }
 }

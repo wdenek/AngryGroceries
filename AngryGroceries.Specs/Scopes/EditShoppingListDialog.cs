@@ -18,7 +18,7 @@ namespace AngryGroceries.Specs.Scopes
         /// </summary>
         /// <param name="driver"></param>
         /// <param name="page"></param>
-        public EditShoppingListDialog(IWebDriver driver, ShoppingListPage page) : base(driver, page,"shopping-list-dialog")
+        public EditShoppingListDialog(IWebDriver driver, ShoppingListPage page) : base(driver, page,"edit-shopping-list-dialog")
         {
         }
 

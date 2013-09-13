@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -9,6 +10,8 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.IE;
+using OpenQA.Selenium.PhantomJS;
+using OpenQA.Selenium.Remote;
 
 namespace AngryGroceries.Specs.Util
 {
@@ -32,6 +35,8 @@ namespace AngryGroceries.Specs.Util
                     return new FirefoxDriver();
                 case BrowserType.InternetExplorer:
                     return new InternetExplorerDriver(InstallDriver("IEDriverServer.exe",Resources.IEDriverServer));
+                case BrowserType.PhantomJs:
+                    return new PhantomJSDriver(InstallDriver("phantomjs.exe", Resources.phantomjs));
                 default: 
                     return null;
             }

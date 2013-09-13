@@ -53,7 +53,7 @@ namespace AngryGroceries.Specs.StepDefinitions
         {
             var page = _browserScenario.Navigator.CurrentPage<ShoppingListPage>();
 
-            page.PendingItems().RemoveItem(item);
+            page.PendingItems().RemoveItem(item).Accept();
         }
 
         [When(@"I remove ""(.*)"" from the completed items")]
@@ -61,7 +61,7 @@ namespace AngryGroceries.Specs.StepDefinitions
         {
             var page = _browserScenario.Navigator.CurrentPage<ShoppingListPage>();
 
-            page.CompletedItems().RemoveItem(item);
+            page.CompletedItems().RemoveItem(item).Accept();
         }
 
         [Then(@"I no longer see ""(.*)"" in the pending items")]
