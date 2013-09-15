@@ -4,7 +4,6 @@ using System.Data.Entity;
 using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Web;
-using AngryGroceries.Data;
 
 namespace AngryGroceries.App_Start
 {
@@ -14,7 +13,7 @@ namespace AngryGroceries.App_Start
         {
 #if DEBUG
             // Automatically create the database when the app is running in debug mode.
-            Database.SetInitializer<GroceryDbContext>(new CreateDatabaseIfNotExists<GroceryDbContext>());
+            Database.SetInitializer<AngryGroceriesDbContext>(new CreateDatabaseIfNotExists<AngryGroceriesDbContext>());
 #endif
 
             // Migrate the database to the latest version.

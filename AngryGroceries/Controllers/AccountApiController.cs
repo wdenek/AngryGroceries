@@ -1,6 +1,5 @@
 ﻿using System.Web;
 using System.Web.Http;
-using AngryGroceries.Data;
 using AngryGroceries.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
@@ -12,7 +11,7 @@ namespace AngryGroceries.Controllers
     {
         public AccountApiController()
         {
-            IdentityManager = new AuthenticationIdentityManager(new IdentityStore(new GroceryDbContext()));
+            IdentityManager = new AuthenticationIdentityManager(new IdentityStore(new AngryGroceriesDbContext()));
         }
 
         public AccountApiController(AuthenticationIdentityManager manager)

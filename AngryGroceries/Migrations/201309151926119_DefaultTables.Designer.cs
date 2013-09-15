@@ -7,13 +7,13 @@ namespace AngryGroceries.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.0.0-rc1-20726")]
-    public sealed partial class Defaulttables : IMigrationMetadata
+    public sealed partial class DefaultTables : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Defaulttables));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(DefaultTables));
         
         string IMigrationMetadata.Id
         {
-            get { return "201309122010528_Default tables"; }
+            get { return "201309151926119_DefaultTables"; }
         }
         
         string IMigrationMetadata.Source

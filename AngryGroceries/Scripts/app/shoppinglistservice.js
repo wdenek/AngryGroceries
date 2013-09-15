@@ -1,7 +1,7 @@
 ﻿angular.module('AngryGroceries').factory('shoppingListService', function ($http) {
     
     function getShoppingLists() {
-        return $http.get('/api/shoppinglists').then(function(result) {
+        return $http.get('/api/shoppinglists').then(function (result) {
             return result.data;
         });
     }

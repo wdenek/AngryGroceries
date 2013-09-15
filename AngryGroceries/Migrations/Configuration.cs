@@ -1,3 +1,5 @@
+using AngryGroceries.Models;
+
 namespace AngryGroceries.Migrations
 {
     using System;
@@ -5,14 +7,14 @@ namespace AngryGroceries.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<AngryGroceries.Data.GroceryDbContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<AngryGroceriesDbContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(AngryGroceries.Data.GroceryDbContext context)
+        protected override void Seed(AngryGroceriesDbContext context)
         {
             //  This method will be called after migrating to the latest version.
 

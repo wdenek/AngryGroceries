@@ -5,7 +5,6 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
-using AngryGroceries.Data;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
@@ -17,9 +16,9 @@ namespace AngryGroceries.Controllers
     [Authorize]
     public class AccountController : Controller
     {
-        public AccountController() 
+        public AccountController()
         {
-            IdentityManager = new AuthenticationIdentityManager(new IdentityStore(new GroceryDbContext()));
+            IdentityManager = new AuthenticationIdentityManager(new IdentityStore(new AngryGroceriesDbContext()));
         }
 
         public AccountController(AuthenticationIdentityManager manager)
@@ -87,18 +86,17 @@ namespace AngryGroceries.Controllers
         {
             if (ModelState.IsValid)
             {
-                // Create a local login before signing in the user
-                var user = new User(model.UserName);
+                var user = new ApplicationUser(model.UserName);
                 var result = await IdentityManager.Users.CreateLocalUserAsync(user, model.Password);
+
                 if (result.Success)
                 {
                     await IdentityManager.Authentication.SignInAsync(AuthenticationManager, user.Id, isPersistent: false);
                     return RedirectToAction("Index", "Home");
                 }
-                else
-                {
-                    AddErrors(result);
-                }
+
+                AddErrors(result);
+
             }
 
             // If we got this far, something failed, redisplay form
@@ -146,13 +144,13 @@ namespace AngryGroceries.Controllers
             ViewBag.HasLocalPassword = hasLocalLogin;
             ViewBag.ReturnUrl = Url.Action("Manage");
             if (hasLocalLogin)
-            {               
+            {
                 if (ModelState.IsValid)
                 {
                     IdentityResult result = await IdentityManager.Passwords.ChangePasswordAsync(User.Identity.GetUserName(), model.OldPassword, model.NewPassword);
                     if (result.Success)
                     {
-                        return RedirectToAction("Manage", new {Message = "Your password has been changed."});
+                        return RedirectToAction("Manage", new { Message = "Your password has been changed." });
                     }
                     else
                     {
@@ -175,7 +173,7 @@ namespace AngryGroceries.Controllers
                     IdentityResult result = await IdentityManager.Logins.AddLocalLoginAsync(userId, User.Identity.GetUserName(), model.NewPassword);
                     if (result.Success)
                     {
-                        return RedirectToAction("Manage", new {Message = "Your password has been set."});
+                        return RedirectToAction("Manage", new { Message = "Your password has been set." });
                     }
                     else
                     {
@@ -207,7 +205,7 @@ namespace AngryGroceries.Controllers
             ClaimsIdentity id = await IdentityManager.Authentication.GetExternalIdentityAsync(AuthenticationManager);
             // Sign in this external identity if its already linked
             IdentityResult result = await IdentityManager.Authentication.SignInExternalIdentityAsync(AuthenticationManager, id);
-            if (result.Success) 
+            if (result.Success)
             {
                 return RedirectToLocal(returnUrl);
             }
@@ -219,7 +217,7 @@ namespace AngryGroceries.Controllers
                 {
                     return RedirectToLocal(returnUrl);
                 }
-                else 
+                else
                 {
                     return View("ExternalLoginFailure");
                 }
@@ -244,7 +242,7 @@ namespace AngryGroceries.Controllers
             {
                 return RedirectToAction("Manage");
             }
-            
+
             if (ModelState.IsValid)
             {
                 // Get the information about the user from the external login provider
@@ -300,8 +298,10 @@ namespace AngryGroceries.Controllers
             }).Result;
         }
 
-        protected override void Dispose(bool disposing) {
-            if (disposing && IdentityManager != null) {
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && IdentityManager != null)
+            {
                 IdentityManager.Dispose();
                 IdentityManager = null;
             }
@@ -346,7 +346,7 @@ namespace AngryGroceries.Controllers
                 context.HttpContext.GetOwinContext().Authentication.Challenge(new AuthenticationProperties() { RedirectUrl = RedirectUrl }, LoginProvider);
             }
         }
-        
+
         #endregion
     }
 }

@@ -52,19 +52,25 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ShoppingListsController.cs" />
-    <Compile Include="Data\AngryUser.cs" />
-    <Compile Include="Data\Grocery.cs" />
-    <Compile Include="Data\GroceryDbContext.cs" />
-    <Compile Include="Data\List.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201309122010528_Default tables.cs" />
-    <Compile Include="Migrations\201309122010528_Default tables.Designer.cs">
-      <DependentUpon>201309122010528_Default tables.cs</DependentUpon>
+    <Compile Include="Migrations\201309151926119_DefaultTables.cs" />
+    <Compile Include="Migrations\201309151926119_DefaultTables.Designer.cs">
+      <DependentUpon>201309151926119_DefaultTables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201309152005522_ModelRefactoring.cs" />
+    <Compile Include="Migrations\201309152005522_ModelRefactoring.Designer.cs">
+      <DependentUpon>201309152005522_ModelRefactoring.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\AngryGroceriesDbContext.cs" />
+    <Compile Include="Models\ApplicationUser.cs" />
+    <Compile Include="Models\Grocery.cs" />
+    <Compile Include="Models\IShoppingListRepository.cs" />
+    <Compile Include="Models\ShoppingList.cs" />
+    <Compile Include="Models\ShoppingListRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -619,8 +625,11 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201309122010528_Default tables.resx">
-      <DependentUpon>201309122010528_Default tables.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201309151926119_DefaultTables.resx">
+      <DependentUpon>201309151926119_DefaultTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201309152005522_ModelRefactoring.resx">
+      <DependentUpon>201309152005522_ModelRefactoring.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
