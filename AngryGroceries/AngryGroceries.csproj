@@ -55,13 +55,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201309151926119_DefaultTables.cs" />
-    <Compile Include="Migrations\201309151926119_DefaultTables.Designer.cs">
-      <DependentUpon>201309151926119_DefaultTables.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201309152005522_ModelRefactoring.cs" />
-    <Compile Include="Migrations\201309152005522_ModelRefactoring.Designer.cs">
-      <DependentUpon>201309152005522_ModelRefactoring.cs</DependentUpon>
+    <Compile Include="Migrations\201309152100156_CreateDatabaseStructure.cs" />
+    <Compile Include="Migrations\201309152100156_CreateDatabaseStructure.Designer.cs">
+      <DependentUpon>201309152100156_CreateDatabaseStructure.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -625,11 +621,8 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201309151926119_DefaultTables.resx">
-      <DependentUpon>201309151926119_DefaultTables.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201309152005522_ModelRefactoring.resx">
-      <DependentUpon>201309152005522_ModelRefactoring.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201309152100156_CreateDatabaseStructure.resx">
+      <DependentUpon>201309152100156_CreateDatabaseStructure.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
