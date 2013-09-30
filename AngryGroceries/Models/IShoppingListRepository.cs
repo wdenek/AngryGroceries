@@ -26,7 +26,7 @@ namespace AngryGroceries.Models
         /// <param name="shoppingList"></param>
         /// <returns></returns>
         void Create(ShoppingList shoppingList, string ownerId);
-
+            
         /// <summary>
         /// Updates an existing shopping list
         /// </summary>

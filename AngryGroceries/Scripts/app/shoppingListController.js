@@ -1,4 +1,4 @@
-﻿angular.module('AngryGroceries').controller('ShoppingListController', ["$scope", "$dialog","shoppingListService", function ($scope, $dialog,shoppingListService) {
+﻿angular.module('AngryGroceries').controller('ShoppingListController', ["$scope", "$dialog", "shoppingListService", "groceryService", function($scope, $dialog, shoppingListService, groceryService) {
     // Public properties
     //----------------------------------------
     $scope.newItemText = "";
@@ -7,8 +7,43 @@
 
     $scope.shoppingLists = [];
 
+
     // Private functions
     //----------------------------------------
+
+    function initializeCallbacks() {
+        groceryService.callbacks.created = function (grocery) {
+            // Create a new task and add it to the list of items
+            $scope.shoppingListItems.push({
+                text: grocery.Name,
+                completed: grocery.Completed,
+                id: grocery.Id
+            });
+        };
+
+        groceryService.callbacks.updated = function(grocery) {
+            for (var i = 0; i < $scope.shoppingListItems.length; i++) {
+                if ($scope.shoppingListItems[i].id == grocery.Id) {
+                    $scope.shoppingListItems[i].text = grocery.name;
+                    $scope.shoppingListItems[i].completed = grocery.Completed;
+                }
+            }
+        };
+
+        groceryService.callbacks.deleted = function (id) {
+            var indexOfItemToDelete = undefined;
+            for (var i = 0; i < $scope.shoppingListItems.length; i++) {
+                if ($scope.shopplingListItems[i].id == id) {
+                    indexOfItemToDelete = i;
+                }
+            }
+            
+            if (indexOfItemToDelete) {
+                $scope.shoppingListItems.splice(indexOfItemToDelete, 1);
+            }
+        };
+    }
+
     function updateShoppingLists(selectedListId) {
         shoppingListService.getShoppingLists().then(function (data) {
             // Clear the shopping lists by setting the length to zero.
@@ -40,12 +75,10 @@
         // Make sure we're not adding any empty items to the list
         if (!$scope.newItemText) return;
 
-        // Create a new task and add it to the list of items
-        $scope.shoppingListItems.push({
-            text: $scope.newItemText,
-            completed: false,
-            id: $scope.shoppingListItems.length
-        });
+        // Add the item to the repository
+        groceryService.createGrocery($scope.newItemText, $scope.selectedShoppingList.Id);
+
+
 
         // Clear the new item text
         $scope.newItemText = "";
@@ -120,17 +153,22 @@
             $scope.selectedShoppingList = null;
             return;
         }
+        
+        groceryService.getGroceries(shoppingList.Id).then(function(data) {
+            // Clear groceries by setting the length to zero.
+            $scope.shoppingListItems.length = 0;
 
-        // For now, just use a dummy list of items.
-        $scope.shoppingListItems = [{
-            id: 1,
-            completed: false,
-            text: "Sample item 1"
-        }, {
-            id: 2,
-            completed: true,
-            text: "Sample item 2"
-        }];
+            console.log(data);
+
+            // Load the existing groceries into the UI.
+            for (var i = 0; i < data.length; i++) {
+                $scope.shoppingListItems.push({
+                    id: data[i].Id,
+                    text: data[i].Name,
+                    completed: data[i].Completed
+                });
+            }
+        });
 
         // Store the selected list in the scope of the controller.
         // The rest of the UI uses this to refer to the current shopping list.
@@ -152,6 +190,12 @@
             if (!result) return;
 
             shoppingListItem.text = result.text;
+
+            groceryService.updateGrocery({
+                id: shoppingListItem.id,
+                name: shoppingListItem.text,
+                completed: shoppingListItem.completed
+            });
         });
     };
 
@@ -172,6 +216,7 @@
             // Use splice to remove the shopping list item from the list.
             // This manipulates the array in-place.
             $scope.shoppingListItems.splice($scope.shoppingListItems.indexOf(shoppingListItem), 1);
+            groceryService.deleteGrocery(shoppingListItem.id);
         });
     };
 
@@ -214,4 +259,5 @@
     // Initialization
     //----------------------------------------
     updateShoppingLists();
+    initializeCallbacks();
 }]);

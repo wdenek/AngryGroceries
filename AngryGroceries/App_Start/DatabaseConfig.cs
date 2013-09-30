@@ -4,6 +4,7 @@ using System.Data.Entity;
 using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Web;
+using AngryGroceries.Models;
 
 namespace AngryGroceries.App_Start
 {

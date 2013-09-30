@@ -13,7 +13,7 @@ namespace AngryGroceries.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201309152100156_CreateDatabaseStructure"; }
+            get { return "201309241848010_CreateDatabaseStructure"; }
         }
         
         string IMigrationMetadata.Source

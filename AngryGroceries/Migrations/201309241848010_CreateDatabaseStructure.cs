@@ -13,8 +13,12 @@ namespace AngryGroceries.Migrations
                     {
                         Id = c.Int(nullable: false, identity: true),
                         Name = c.String(),
+                        Completed = c.Boolean(nullable: false),
+                        List_Id = c.Int(),
                     })
-                .PrimaryKey(t => t.Id);
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.ShoppingLists", t => t.List_Id)
+                .Index(t => t.List_Id);
             
             CreateTable(
                 "dbo.ShoppingLists",
@@ -115,19 +119,6 @@ namespace AngryGroceries.Migrations
                 .PrimaryKey(t => t.UserName);
             
             CreateTable(
-                "dbo.ShoppingListGroceries",
-                c => new
-                    {
-                        ShoppingList_Id = c.Int(nullable: false),
-                        Grocery_Id = c.Int(nullable: false),
-                    })
-                .PrimaryKey(t => new { t.ShoppingList_Id, t.Grocery_Id })
-                .ForeignKey("dbo.ShoppingLists", t => t.ShoppingList_Id, cascadeDelete: true)
-                .ForeignKey("dbo.Groceries", t => t.Grocery_Id, cascadeDelete: true)
-                .Index(t => t.ShoppingList_Id)
-                .Index(t => t.Grocery_Id);
-            
-            CreateTable(
                 "dbo.ApplicationUserShoppingLists",
                 c => new
                     {
@@ -151,8 +142,7 @@ namespace AngryGroceries.Migrations
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.ApplicationUserShoppingLists", "ShoppingList_Id", "dbo.ShoppingLists");
             DropForeignKey("dbo.ApplicationUserShoppingLists", "ApplicationUser_Id", "dbo.AspNetUsers");
-            DropForeignKey("dbo.ShoppingListGroceries", "Grocery_Id", "dbo.Groceries");
-            DropForeignKey("dbo.ShoppingListGroceries", "ShoppingList_Id", "dbo.ShoppingLists");
+            DropForeignKey("dbo.Groceries", "List_Id", "dbo.ShoppingLists");
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
@@ -160,10 +150,8 @@ namespace AngryGroceries.Migrations
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
             DropIndex("dbo.ApplicationUserShoppingLists", new[] { "ShoppingList_Id" });
             DropIndex("dbo.ApplicationUserShoppingLists", new[] { "ApplicationUser_Id" });
-            DropIndex("dbo.ShoppingListGroceries", new[] { "Grocery_Id" });
-            DropIndex("dbo.ShoppingListGroceries", new[] { "ShoppingList_Id" });
+            DropIndex("dbo.Groceries", new[] { "List_Id" });
             DropTable("dbo.ApplicationUserShoppingLists");
-            DropTable("dbo.ShoppingListGroceries");
             DropTable("dbo.AspNetUserSecrets");
             DropTable("dbo.AspNetUserClaims");
             DropTable("dbo.AspNetTokens");

@@ -10,7 +10,6 @@ namespace AngryGroceries.Specs.Util
     {
         InternetExplorer,
         Chrome,
-        PhantomJs,
         Firefox
     }
 }

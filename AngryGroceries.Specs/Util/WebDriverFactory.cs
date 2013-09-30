@@ -35,9 +35,7 @@ namespace AngryGroceries.Specs.Util
                     return new FirefoxDriver();
                 case BrowserType.InternetExplorer:
                     return new InternetExplorerDriver(InstallDriver("IEDriverServer.exe",Resources.IEDriverServer));
-                case BrowserType.PhantomJs:
-                    return new PhantomJSDriver(InstallDriver("phantomjs.exe", Resources.phantomjs));
-                default: 
+                 default: 
                     return null;
             }
         }

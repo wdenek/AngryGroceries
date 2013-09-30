@@ -34,7 +34,8 @@ namespace AngryGroceries
             bundles.Add(new Bundle("~/Scripts/angrygroceries")
                 .Include("~/Scripts/app/app.js")
                 .Include("~/Scripts/app/*Service.js")
-                .Include("~/Scripts/app/*Controller.js"));
+                .Include("~/Scripts/app/*Controller.js")
+                .Include("~/Scripts/jquery.signalR-2.0.0-rc1.min.js"));
         }
     }
 }

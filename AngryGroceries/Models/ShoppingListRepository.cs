@@ -8,7 +8,7 @@ namespace AngryGroceries.Models
 {
     public class ShoppingListRepository : IShoppingListRepository
     {
-        private AngryGroceriesDbContext _dataContext;
+        private readonly AngryGroceriesDbContext _dataContext;
 
         /// <summary>
         /// Initializes a new instance of <see cref="ShoppingListRepository"/>
