@@ -19,12 +19,13 @@
                 completed: grocery.Completed,
                 id: grocery.Id
             });
+            $scope.$apply();
         };
 
-        groceryService.callbacks.updated = function(grocery) {
+        groceryService.callbacks.updated = function (grocery) {
             for (var i = 0; i < $scope.shoppingListItems.length; i++) {
                 if ($scope.shoppingListItems[i].id == grocery.Id) {
-                    $scope.shoppingListItems[i].text = grocery.name;
+                    $scope.shoppingListItems[i].text = grocery.Name;
                     $scope.shoppingListItems[i].completed = grocery.Completed;
                 }
             }
@@ -33,11 +34,10 @@
         groceryService.callbacks.deleted = function (id) {
             var indexOfItemToDelete = undefined;
             for (var i = 0; i < $scope.shoppingListItems.length; i++) {
-                if ($scope.shopplingListItems[i].id == id) {
+                if ($scope.shoppingListItems[i].id == id) {
                     indexOfItemToDelete = i;
                 }
             }
-            
             if (indexOfItemToDelete) {
                 $scope.shoppingListItems.splice(indexOfItemToDelete, 1);
             }

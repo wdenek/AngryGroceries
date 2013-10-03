@@ -50,7 +50,7 @@ namespace AngryGroceries.Hubs
         public void Delete(int id)
         {
             _groceryRepository.Delete(id);
-            Clients.All.groceryeleted(id);
+            Clients.All.groceryDeleted(id);
         }
     }
 }
