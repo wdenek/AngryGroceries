@@ -20,6 +20,16 @@ namespace AngryGroceries.Models
         }
 
         /// <summary>
+        /// Retrieves the grocery with the given id.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public Grocery Get(int id)
+        {
+            return _dataContext.Groceries.FirstOrDefault(grocery => grocery.Id == id);
+        }
+
+        /// <summary>
         /// Retrieves previously added groceries by the user.
         /// </summary>
         /// <param name="id"></param>
@@ -74,6 +84,7 @@ namespace AngryGroceries.Models
                 }
 
                 existingGrocery.Name = grocery.Name;
+                existingGrocery.Completed = grocery.Completed;
                 _dataContext.SaveChanges();
                 scope.Complete();
             }

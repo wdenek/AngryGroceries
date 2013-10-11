@@ -2,45 +2,63 @@
     // Public properties
     //----------------------------------------
     $scope.newItemText = "";
-
     $scope.shoppingListItems = [];
-
     $scope.shoppingLists = [];
-
 
     // Private functions
     //----------------------------------------
 
     function initializeCallbacks() {
         groceryService.callbacks.created = function (grocery) {
-            // Create a new task and add it to the list of items
-            $scope.shoppingListItems.push({
-                text: grocery.Name,
-                completed: grocery.Completed,
-                id: grocery.Id
-            });
-            $scope.$apply();
+            console.log('created callback invoked');
+            var existingItem = false;
+            // update or add item
+            for (var i = 0; i < $scope.shoppingListItems.length; i++) {
+                if ($scope.shoppingListItems[i].correlationId == grocery.CorrelationId) {
+                    $scope.shoppingListItems[i].id = grocery.Id;
+                    existingItem = true;
+                }
+            }
+
+            if (!existingItem) {
+                $scope.shoppingListItems.push({
+                    id: grocery.Id,
+                    text: grocery.Name,
+                    completed: grocery.Completed
+                });
+
+                $scope.$apply();
+            }
+            console.log($scope.shoppingListItems);
         };
 
         groceryService.callbacks.updated = function (grocery) {
+            console.log('updated callback invoked');
             for (var i = 0; i < $scope.shoppingListItems.length; i++) {
                 if ($scope.shoppingListItems[i].id == grocery.Id) {
                     $scope.shoppingListItems[i].text = grocery.Name;
                     $scope.shoppingListItems[i].completed = grocery.Completed;
                 }
             }
+
+            $scope.$apply();
         };
 
         groceryService.callbacks.deleted = function (id) {
+            console.log('deleted callback invoked');
             var indexOfItemToDelete = undefined;
             for (var i = 0; i < $scope.shoppingListItems.length; i++) {
                 if ($scope.shoppingListItems[i].id == id) {
                     indexOfItemToDelete = i;
                 }
             }
+            console.log('indexofitemtodelete: ' + indexOfItemToDelete);
+
             if (indexOfItemToDelete) {
                 $scope.shoppingListItems.splice(indexOfItemToDelete, 1);
             }
+
+            $scope.$apply();
         };
     }
 
@@ -75,10 +93,24 @@
         // Make sure we're not adding any empty items to the list
         if (!$scope.newItemText) return;
 
+        // Construct the item
+        var grocery = {
+            id: 0,
+            name: $scope.newItemText,
+            correlationId: groceryService.generateCorrelationId(),
+            completed: false
+        };
+
+        // Add the item to the local list
+        $scope.shoppingListItems.push({
+            id: grocery.id,
+            text: grocery.name,
+            correlationId: grocery.correlationId,
+            completed: grocery.completed
+        });
+
         // Add the item to the repository
-        groceryService.createGrocery($scope.newItemText, $scope.selectedShoppingList.Id);
-
-
+        groceryService.createGrocery(grocery, $scope.selectedShoppingList.Id);
 
         // Clear the new item text
         $scope.newItemText = "";
@@ -170,12 +202,16 @@
             }
         });
 
+        // Subscribe to events from the selected list.
+        groceryService.subscribeToList(shoppingList.Id);
+
         // Store the selected list in the scope of the controller.
         // The rest of the UI uses this to refer to the current shopping list.
         $scope.selectedShoppingList = shoppingList;
     };
 
-    $scope.editItem = function(shoppingListItem) {
+    $scope.editItem = function (shoppingListItem) {
+        debugger;
         var dialog = $dialog.dialog({
             // Use a custom resolve to pass in the shopping list that is currently selected.
             // A copy is used to make the dialog somewhat transactional here.

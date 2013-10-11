@@ -78,6 +78,7 @@
     <Content Include="Scripts\app\app.js" />
     <Content Include="Scripts\app\createShoppingListController.js" />
     <Content Include="Scripts\app\editItemController.js" />
+    <Content Include="Scripts\app\templates\editItemController.js" />
     <Content Include="Scripts\app\editShoppingListController.js" />
     <Content Include="Scripts\app\groceryService.js" />
     <Content Include="Scripts\app\removeItemController.js" />

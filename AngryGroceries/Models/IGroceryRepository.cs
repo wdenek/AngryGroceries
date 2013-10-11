@@ -8,6 +8,13 @@ namespace AngryGroceries.Models
     public interface IGroceryRepository
     {
         /// <summary>
+        /// Retrieves the grocery with the given id.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        Grocery Get(int id);
+
+        /// <summary>
         /// Retrieves previously added groceries by the user.
         /// </summary>
         /// <param name="id"></param>
